@@ -1,0 +1,390 @@
+/* Capital Edge Sports — design tokens and shared styles */
+
+:root {
+  /* Color */
+  --navy: #12284c;
+  --navy-700: #2a3f63;
+  --red: #c8102e;
+  --red-dark: #9e0c24;
+  --cream: #f6f1e7;
+  --sand: #e6dfd0;
+  --mist: #dce1e8;
+  --white: #ffffff;
+  --ink-soft: #2e3e58;
+  --slate: #5b6b7f;
+  --input-border: #a8b2bf;
+
+  /* Type */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+
+  /* Layout */
+  --container: 1240px;
+  --container-narrow: 880px;
+  --gutter: 24px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--navy);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+  margin: 0;
+}
+
+a {
+  color: var(--red);
+}
+a:hover {
+  color: var(--red-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+.container--narrow {
+  max-width: var(--container-narrow);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
+}
+
+.split--top {
+  align-items: flex-start;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min, 260px), 1fr));
+}
+
+.section-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 760px;
+}
+
+/* ---------- Type ---------- */
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.eyebrow--sm {
+  font-size: 13px;
+}
+.eyebrow--accent {
+  color: var(--red);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+.display--hero {
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.9;
+  max-width: 960px;
+}
+.display--section {
+  font-size: clamp(40px, 5vw, 60px);
+}
+.display--lg {
+  font-size: 52px;
+}
+.display--md {
+  font-size: 48px;
+}
+.display--card {
+  font-size: 40px;
+  line-height: 1;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: 20px;
+  line-height: 1.55;
+  max-width: 680px;
+}
+.body-lg {
+  font-size: 19px;
+  line-height: 1.6;
+}
+.body {
+  font-size: 18px;
+  line-height: 1.6;
+}
+.body-sm {
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.link-strong {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 14px 22px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.btn--lg {
+  font-size: 18px;
+  padding: 16px 26px;
+}
+.btn--primary {
+  background: var(--red);
+  color: var(--white);
+}
+.btn--primary:hover {
+  background: var(--red-dark);
+  color: var(--white);
+}
+.btn--outline {
+  background: transparent;
+  border: 2px solid var(--cream);
+  color: var(--cream);
+  padding: 12px 20px;
+}
+.btn--outline.btn--lg {
+  padding: 14px 24px;
+}
+.btn--outline:hover {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+/* ---------- Surfaces ---------- */
+
+.bg-navy {
+  background: var(--navy);
+  color: var(--cream);
+}
+.bg-cream {
+  background: var(--cream);
+}
+.bg-white {
+  background: var(--white);
+}
+.bg-red {
+  background: var(--red);
+  color: var(--white);
+}
+
+.card {
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card--lg {
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  gap: 14px;
+}
+.card--outline {
+  border: 2px solid var(--navy);
+  gap: 8px;
+}
+.bg-navy a:not(.btn) {
+  color: var(--cream);
+}
+
+.tag {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+.tag--red {
+  background: var(--red);
+  color: var(--white);
+}
+.tag--sand {
+  background: var(--sand);
+  color: var(--navy);
+}
+.tag--cream {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+/* Photo placeholder until real photography is added */
+.photo {
+  border-radius: var(--radius-lg);
+  background: var(--mist);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  font-size: 16px;
+}
+.bg-navy .photo {
+  background: var(--navy-700);
+  color: var(--cream);
+}
+
+/* Double red bar — echoes the bars on the crest */
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 120px;
+}
+.bars::before,
+.bars::after {
+  content: '';
+  height: 8px;
+  background: var(--red);
+}
+
+/* ---------- Forms ---------- */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field--full {
+  grid-column: 1 / -1;
+}
+.field label {
+  font-size: 15px;
+  font-weight: 600;
+}
+.input {
+  font: inherit;
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  color: var(--navy);
+  min-height: 44px;
+  width: 100%;
+}
+
+.fieldset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fieldset legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--input-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  min-height: 44px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.choice input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--red);
+}
+
+.check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.check input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--red);
+  flex-shrink: 0;
+}
+
+.fine-print {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--slate);
+}

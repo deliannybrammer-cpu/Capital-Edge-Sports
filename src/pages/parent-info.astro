@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import PageHero from '../components/PageHero.astro';
+
+const faqs = [
+  { q: 'Does my child need experience?', a: 'No. Clinics are built for all levels; coaches group players by age and skill.' },
+  {
+    q: 'Can I drop off?',
+    a: 'Yes. Sign your child in at check-in and sign out at pickup. We only release players to adults on the authorized pickup list.',
+  },
+  {
+    q: 'What about food allergies?',
+    a: 'Tell us on the registration form. We will have [allergy-friendly option]; you are welcome to pack a lunch.',
+  },
+  {
+    q: 'What if my child gets hurt?',
+    a: 'Coaches are trained in first aid and concussion awareness. We will call you right away for any injury.',
+  },
+  {
+    q: 'Is this a tryout for a team?',
+    a: 'No. Clinics are for development and fun. Edge Elite tryouts will be announced separately.',
+  },
+  {
+    q: 'What happens in bad weather?',
+    a: 'If MCPS or CUPF closes the building, we will email and text by [time] and offer a make-up date or refund.',
+  },
+];
+
+const policies = [
+  {
+    title: 'Concussion policy',
+    text: 'Any player suspected of a concussion is removed from play immediately, parents are notified, and the player may not return that day. Return requires written clearance from a licensed health care provider.',
+    link: 'Full policy →',
+  },
+  {
+    title: 'Code of conduct',
+    text: 'Respect coaches, teammates and the facility. Bullying, profanity and unsafe play are not tolerated.',
+    link: 'Full code →',
+  },
+  { title: 'Safety', text: 'Background-checked coaches, two-adult rule, sign-in/sign-out.' },
+  { title: 'Refunds', text: '[Your policy].' },
+];
+---
+
+<BaseLayout title="Parent Info — Capital Edge Sports">
+  <PageHero eyebrow="For parents" title="Parent info">
+    <p class="lead" style="max-width: 640px">Answers to common questions, plus the policies that keep every player safe.</p>
+  </PageHero>
+
+  <Section narrow pad="80px">
+    <div class="stack" style="gap: 24px">
+      <h2 class="display display--lg">FAQ</h2>
+      <div class="faq">
+        {
+          faqs.map((f) => (
+            <details open>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <Section bg="cream" pad="80px">
+    <div class="stack" style="gap: 28px">
+      <h2 class="display display--lg">Policies</h2>
+      <div class="grid">
+        {
+          policies.map((p) => (
+            <div class="card bg-white">
+              <h3 class="title">{p.title}</h3>
+              <p class="body-sm" style="line-height: 1.55">{p.text}</p>
+              {p.link && (
+                <a href="#" class="link-strong policy-link">
+                  {p.link}
+                </a>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <Section pad="72px" class="contact">
+    <div class="stack" style="gap: 8px">
+      <h2 class="display" style="font-size: 44px; line-height: 1">Still have a question?</h2>
+      <p class="body-lg" style="font-size: 18px; line-height: 1.5">[email] · [phone] · [social]</p>
+    </div>
+    <a href="/register/" class="btn btn--primary btn--lg">Register for December 13 →</a>
+  </Section>
+</BaseLayout>
+
+<style>
+  .faq {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid var(--navy);
+  }
+  details {
+    border-bottom: 1px solid var(--sand);
+    padding: 20px 0;
+  }
+  summary {
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  details p {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .policy-link {
+    margin-top: auto;
+    font-size: 16px;
+  }
+  :global(.contact) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  :global(.contact) .btn {
+    align-self: center;
+  }
+</style>

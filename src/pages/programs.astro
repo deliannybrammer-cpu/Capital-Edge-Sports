@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import PageHero from '../components/PageHero.astro';
+
+const interestFields = [
+  { id: 'ei-parent', label: 'Parent name', type: 'text', autocomplete: 'name' },
+  { id: 'ei-email', label: 'Email', type: 'email', autocomplete: 'email' },
+  { id: 'ei-player', label: 'Player name', type: 'text' },
+  { id: 'ei-grade', label: 'Grade', type: 'text' },
+  { id: 'ei-team', label: 'Current team / level', type: 'text', full: true },
+];
+---
+
+<BaseLayout title="Programs — Capital Edge Sports">
+  <PageHero eyebrow="Programs" title="Every level. One standard." pad={88}>
+    <p class="lead">Start with a clinic, build with focused skills work, and, when you're ready, compete with Edge Elite.</p>
+  </PageHero>
+
+  <Section bg="cream" pad="88px">
+    <div class="stack" style="gap: 28px">
+      <article class="feature bg-white">
+        <div class="photo feature-photo">[Photo: ball-handling drill]</div>
+        <div class="stack feature-body">
+          <span class="tag tag--red">Now enrolling</span>
+          <h2 class="display display--md">Edge Clinics</h2>
+          <p class="body">
+            High-energy, half-day sessions covering ball handling, shooting, footwork, defense and team play, plus a
+            leadership moment built around the EDGE Standard.
+          </p>
+          <p class="body-sm"><b>Who:</b> [Boys and girls ages X–X], all skill levels</p>
+          <a href="/register/" class="btn btn--primary" style="margin-top: 6px">Register for December 13 →</a>
+        </div>
+      </article>
+
+      <div class="grid" style="--min: 320px; gap: 28px">
+        <article class="card card--lg bg-white" style="padding: 40px">
+          <span class="tag tag--sand">Coming 2027</span>
+          <h2 class="display display--card" style="line-height: 0.95">Edge Skills Sessions</h2>
+          <p class="body">Small-group training for players who want focused reps and steady progress.</p>
+        </article>
+        <article class="card card--lg bg-navy" style="padding: 40px">
+          <span class="tag tag--cream">Coming soon</span>
+          <h2 class="display display--card" style="line-height: 0.95">Edge Elite</h2>
+          <p class="body">
+            A competitive, tryout-based club for committed players. Tournament play, advanced training and higher
+            expectations, on and off the court.
+          </p>
+          <a href="#interest" class="link-strong">Join the interest list ↓</a>
+        </article>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="interest" pad="88px" class="split split--top">
+    <div class="stack" style="flex: 1 1 360px; gap: 16px">
+      <p class="eyebrow eyebrow--accent">Edge Elite</p>
+      <h2 class="display display--lg">Be first to hear about tryouts</h2>
+      <p class="body">
+        Join the interest list and we'll email you when Edge Elite tryout dates are announced. No commitment.
+      </p>
+    </div>
+    <form class="interest-form bg-cream">
+      {
+        interestFields.map((f) => (
+          <div class:list={['field', { 'field--full': f.full }]}>
+            <label for={f.id}>{f.label}</label>
+            <input id={f.id} name={f.id} type={f.type} autocomplete={f.autocomplete} class="input" />
+          </div>
+        ))
+      }
+      <button type="button" class="btn btn--primary field--full">Join the interest list</button>
+    </form>
+  </Section>
+</BaseLayout>
+
+<style>
+  .feature {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .feature-photo {
+    flex: 1 1 380px;
+    min-height: 320px;
+    border-radius: 0;
+  }
+  .feature-body {
+    flex: 1 1 520px;
+    padding: 44px;
+    gap: 14px;
+  }
+  .interest-form {
+    flex: 1 1 520px;
+    border-radius: var(--radius-lg);
+    padding: 36px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px 20px;
+  }
+  .interest-form .btn {
+    justify-self: start;
+  }
+</style>

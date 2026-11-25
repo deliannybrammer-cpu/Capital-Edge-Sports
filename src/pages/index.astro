@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+
+const values = [
+  { letter: 'E', name: 'Effort', text: 'I control my hustle and my attitude, every rep.' },
+  { letter: 'D', name: 'Dependability', text: 'My teammates can count on me. I show up, I listen, I pick others up.' },
+  { letter: 'G', name: 'Growth', text: 'Mistakes are part of getting better. I try the hard thing.' },
+  { letter: 'E', name: 'Excellence', text: 'I hold a high standard, in the game, in school and at home.' },
+];
+const star = '0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24';
+---
+
+<BaseLayout title="Capital Edge Sports — Youth basketball in Montgomery County">
+  <div class="bg-red">
+    <div class="container announce">
+      <p><b>Our first clinic is Sunday, December 13 · 11 AM–2 PM · [School name].</b> Lunch included. Spots are limited.</p>
+      <a href="/register/">Save a spot →</a>
+    </div>
+  </div>
+
+  <Section bg="navy" pad="88px 96px" class="split">
+    <div class="stack hero-copy">
+      <div class="hero-kicker">
+        <svg width="66" height="18" viewBox="0 0 66 18" aria-hidden="true">
+          {[9, 33, 57].map((x) => <polygon transform={`translate(${x} 9) scale(0.9)`} points={star} fill="#C8102E" />)}
+        </svg>
+        <p class="eyebrow">Youth basketball · Montgomery County</p>
+      </div>
+      <h1 class="display hero-title">Sharpen your game. Build your character.</h1>
+      <p class="hero-lead">
+        Youth basketball training in Montgomery County that develops skilled players, great teammates and confident
+        leaders.
+      </p>
+      <div class="actions">
+        <a href="/register/" class="btn btn--primary btn--lg">Register for our first clinic →</a>
+        <a href="/programs/" class="btn btn--outline btn--lg">See programs</a>
+      </div>
+    </div>
+    <div class="photo" style="flex: 1 1 420px; min-height: 440px">[Photo: players in a huddle with a coach]</div>
+  </Section>
+
+  <Section bg="cream" pad="96px" class="split">
+    <div class="photo" style="flex: 1 1 420px; min-height: 360px">[Photo: a player high-fiving a teammate]</div>
+    <div class="stack" style="flex: 1 1 480px; gap: 18px">
+      <p class="eyebrow eyebrow--accent">Why Capital Edge</p>
+      <h2 class="display display--section">More than a sports program</h2>
+      <p class="body-lg">
+        At Capital Edge, we believe the game teaches lessons that last long after the final buzzer. Every session builds
+        real skills, and every session builds the person: effort, teamwork, confidence and leadership.
+      </p>
+      <a href="/about/" class="link-strong">Our story →</a>
+    </div>
+  </Section>
+
+  <Section pad="96px">
+    <div class="stack" style="gap: 40px">
+      <div class="section-intro">
+        <p class="eyebrow eyebrow--accent">Our values</p>
+        <h2 class="display display--section">The EDGE Standard</h2>
+        <p class="body-lg">
+          Effort · Dependability · Growth · Excellence. Four values our coaches teach, model and celebrate in every drill.
+        </p>
+      </div>
+      <div class="grid" style="--min: 240px">
+        {
+          values.map((v) => (
+            <div class="card bg-cream">
+              <p class="value-letter" aria-hidden="true">{v.letter}</p>
+              <h3 class="title">{v.name}</h3>
+              <p class="body-sm">{v.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Section>
+
+  <Section bg="cream" pad="96px">
+    <div class="stack" style="gap: 40px">
+      <div class="section-intro">
+        <p class="eyebrow eyebrow--accent">Programs</p>
+        <h2 class="display display--section">Two pathways, one family</h2>
+        <p class="body-lg">
+          Your child does not have to be the best player in the gym to belong here, and the best player in the gym will
+          still be pushed.
+        </p>
+      </div>
+      <div class="grid" style="--min: 300px; gap: 24px">
+        <div class="card card--lg bg-white">
+          <p class="eyebrow eyebrow--sm eyebrow--accent">Now enrolling</p>
+          <h3 class="display display--card">Edge Development</h3>
+          <p class="body" style="line-height: 1.55">Clinics and skills sessions for every level. Come learn, compete and have fun.</p>
+          <a href="/programs/" class="btn btn--primary" style="margin-top: 8px">Explore clinics</a>
+        </div>
+        <div class="card card--lg bg-navy">
+          <p class="eyebrow eyebrow--sm">Coming soon</p>
+          <h3 class="display display--card">Edge Elite</h3>
+          <p class="body" style="line-height: 1.55">A competitive club for committed players ready for tournament play.</p>
+          <a href="/programs/#interest" class="btn btn--outline" style="margin-top: 8px">Join the interest list</a>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section pad="96px">
+    <div class="stack closing">
+      <div class="bars" aria-hidden="true"></div>
+      <h2 class="display closing-title">Every kid has an edge. Let's find it together.</h2>
+      <a href="/register/" class="btn btn--primary btn--lg" style="align-self: center">Register for the December 13 clinic →</a>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .announce {
+    padding-block: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 6px 16px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .announce a {
+    color: var(--white);
+    font-weight: 700;
+  }
+  .hero-copy {
+    flex: 1 1 520px;
+    gap: 24px;
+  }
+  .hero-kicker {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .hero-title {
+    font-size: clamp(56px, 8vw, 104px);
+    line-height: 0.88;
+  }
+  .hero-lead {
+    font-size: 21px;
+    line-height: 1.5;
+    max-width: 560px;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .value-letter {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 80px;
+    line-height: 0.85;
+    color: var(--red);
+  }
+  .closing {
+    align-items: center;
+    gap: 24px;
+    text-align: center;
+  }
+  .closing-title {
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 0.92;
+    max-width: 900px;
+  }
+</style>

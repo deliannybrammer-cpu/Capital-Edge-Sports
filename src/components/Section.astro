@@ -1,0 +1,19 @@
+---
+/** Full-bleed band with a centered container. */
+interface Props {
+  bg?: 'white' | 'cream' | 'navy';
+  narrow?: boolean;
+  /** CSS padding-block value, e.g. "88px" or "88px 96px" */
+  pad?: string;
+  id?: string;
+  class?: string;
+}
+
+const { bg = 'white', narrow = false, pad = '88px', id, class: className } = Astro.props;
+---
+
+<section id={id} class={`bg-${bg}`}>
+  <div class:list={['container', { 'container--narrow': narrow }, className]} style={`padding-block: ${pad}`}>
+    <slot />
+  </div>
+</section>

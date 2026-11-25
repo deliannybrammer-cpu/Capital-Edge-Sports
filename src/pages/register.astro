@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import PageHero from '../components/PageHero.astro';
+
+const details = [
+  { label: 'When', lines: ['Sunday, December 13, 2026', '11:00 AM–2:00 PM'] },
+  { label: 'Where', lines: ['[School name and address]', 'Enter through [door]'] },
+  { label: 'Who', lines: ['[Ages/grades]', 'All skill levels'] },
+  { label: 'Cost', lines: ['[Free / $X]'] },
+  { label: 'Included', lines: ['Pizza lunch, drinks and snacks'] },
+  { label: 'Bring', lines: ['Indoor court shoes (clean soles), athletic clothes, a labeled water bottle'] },
+];
+
+type Field = { id: string; label: string; type?: string; full?: boolean; autocomplete?: string };
+const groups: { title: string; fields: Field[] }[] = [
+  {
+    title: 'Parent / guardian',
+    fields: [
+      { id: 'pname', label: 'Parent/guardian name', autocomplete: 'name' },
+      { id: 'pemail', label: 'Email', type: 'email', autocomplete: 'email' },
+      { id: 'pcell', label: 'Cell phone', type: 'tel', autocomplete: 'tel' },
+    ],
+  },
+  {
+    title: 'Player',
+    fields: [
+      { id: 'player', label: 'Player name' },
+      { id: 'age', label: 'Age', type: 'number' },
+      { id: 'grade', label: 'Grade' },
+      { id: 'school', label: 'School' },
+      { id: 'shirt', label: 'T-shirt size' },
+    ],
+  },
+  {
+    title: 'Health & safety',
+    fields: [
+      { id: 'medical', label: 'Allergies and medical conditions', full: true },
+      { id: 'emname', label: 'Emergency contact name (not the parent)' },
+      { id: 'emphone', label: 'Emergency contact phone', type: 'tel' },
+      { id: 'pickup', label: 'Authorized pickup names', full: true },
+    ],
+  },
+  { title: 'One more thing', fields: [{ id: 'heard', label: 'How did you hear about us?', full: true }] },
+];
+
+const experience = ['New to basketball', 'Some experience', 'Plays on a team'];
+---
+
+<BaseLayout title="Register — Capital Edge Sports">
+  <PageHero eyebrow="Now enrolling · Spots are limited" title="Capital Edge Winter Clinic">
+    <p style="font-size: 22px; line-height: 1.4">Sunday, December 13, 2026 · 11:00 AM–2:00 PM</p>
+  </PageHero>
+
+  <Section bg="cream" pad="72px" class="grid">
+    {
+      details.map((d) => (
+        <div class="card bg-white detail">
+          <p class="eyebrow eyebrow--sm eyebrow--accent">{d.label}</p>
+          <p class="detail-text">
+            {d.lines.map((line, i) => (
+              <>
+                {i > 0 && <br />}
+                {line}
+              </>
+            ))}
+          </p>
+        </div>
+      ))
+    }
+    <div class="card bg-navy detail field--full">
+      <p class="eyebrow eyebrow--sm">Drop-off &amp; pickup</p>
+      <p class="detail-text">
+        Parents are welcome to drop off. Check-in opens at 10:45 AM; pickup is at 2:00 PM sharp with sign-out.
+      </p>
+    </div>
+  </Section>
+
+  <Section narrow pad="80px">
+    <div class="stack" style="gap: 32px">
+      <h2 class="display display--lg">Register your player</h2>
+      <form class="stack" style="gap: 36px">
+        {
+          groups.map((g) => (
+            <fieldset class="fieldset">
+              <legend>{g.title}</legend>
+              <div class="grid" style="--min: 240px; gap: 16px 20px">
+                {g.fields.map((f) => (
+                  <div class:list={['field', { 'field--full': f.full }]}>
+                    <label for={`reg-${f.id}`}>{f.label}</label>
+                    <input
+                      id={`reg-${f.id}`}
+                      name={f.id}
+                      type={f.type ?? 'text'}
+                      autocomplete={f.autocomplete}
+                      class="input"
+                    />
+                  </div>
+                ))}
+              </div>
+            </fieldset>
+          ))
+        }
+
+        <fieldset class="fieldset">
+          <legend>Experience level</legend>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px">
+            {
+              experience.map((label) => (
+                <label class="choice">
+                  <input type="radio" name="experience" value={label} />
+                  {label}
+                </label>
+              ))
+            }
+          </div>
+        </fieldset>
+
+        <fieldset class="fieldset">
+          <legend>Agreements</legend>
+          <label class="check">
+            <input type="checkbox" name="waiver" required />
+            <span>I agree to the <a href="/parent-info/">liability waiver</a>. <b>Required</b></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="concussion" required />
+            <span>I have read the <a href="/parent-info/">concussion information sheet</a>. <b>Required</b></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="conduct" required />
+            <span>My player and I agree to the <a href="/parent-info/">code of conduct</a>. <b>Required</b></span>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="media" />
+            <span>I give permission for photos and video of my player. Optional</span>
+          </label>
+        </fieldset>
+
+        <div class="stack submit-row">
+          <button type="button" class="btn btn--primary btn--lg">Complete registration</button>
+          <p class="fine-print">
+            This activity is not sponsored by, associated with, or endorsed by Montgomery County Public Schools or
+            Montgomery County Government.
+          </p>
+        </div>
+      </form>
+    </div>
+  </Section>
+</BaseLayout>
+
+<style>
+  .detail {
+    padding: 26px;
+    gap: 6px;
+  }
+  .detail-text {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  .submit-row {
+    gap: 16px;
+    border-top: 1px solid var(--sand);
+    padding-top: 28px;
+  }
+</style>

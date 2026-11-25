@@ -1,0 +1,49 @@
+---
+/**
+ * Capital Edge Sports crest: shield with three DC-flag stars,
+ * CAPITAL / EDGE / SPORTS wordmark and the double red bar.
+ */
+interface Props {
+  size?: number;
+  variant?: 'full' | 'reverse' | 'mono';
+}
+
+const { size = 300, variant = 'full' } = Astro.props;
+
+const palettes = {
+  full: { shield: '#12284C', line: '#F6F1E7', star: '#C8102E', text: '#F6F1E7' },
+  reverse: { shield: '#F6F1E7', line: '#12284C', star: '#C8102E', text: '#12284C' },
+  mono: { shield: '#12284C', line: '#F6F1E7', star: '#F6F1E7', text: '#F6F1E7' },
+};
+const c = palettes[variant];
+const star = '0,-10 2.35,-3.24 9.51,-3.09 3.8,1.24 5.88,8.09 0,4 -5.88,8.09 -3.8,1.24 -9.51,-3.09 -2.35,-3.24';
+---
+
+<svg
+  width={size}
+  height={Math.round(size * 1.2)}
+  viewBox="0 0 200 240"
+  role="img"
+  aria-label="Capital Edge Sports crest"
+  class="crest"
+>
+  <path d="M100 6 L190 34 V118 C190 178 150 214 100 234 C50 214 10 178 10 118 V34 Z" fill={c.shield}></path>
+  <path
+    d="M100 18 L178 42 V118 C178 170 143 202 100 220 C57 202 22 170 22 118 V42 Z"
+    fill="none"
+    stroke={c.line}
+    stroke-width="2.5"></path>
+  {[70, 100, 130].map((x) => <polygon transform={`translate(${x} 66) scale(1.25)`} points={star} fill={c.star} />)}
+  <text x="100" y="110" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="26" letter-spacing="2" fill={c.text}>CAPITAL</text>
+  <text x="100" y="142" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="38" letter-spacing="3" fill={c.text}>EDGE</text>
+  <rect x="46" y="152" width="108" height="8" fill={c.star}></rect>
+  <rect x="46" y="166" width="108" height="8" fill={c.star}></rect>
+  <text x="100" y="194" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" letter-spacing="5" fill={c.text}>SPORTS</text>
+</svg>
+
+<style>
+  .crest {
+    display: block;
+    flex-shrink: 0;
+  }
+</style>

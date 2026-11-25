@@ -1,0 +1,18 @@
+---
+/** Navy page header used on every interior page. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  pad?: number;
+}
+
+const { eyebrow, title, pad = 80 } = Astro.props;
+---
+
+<section class="bg-navy">
+  <div class="container stack" style={`padding-block: ${pad}px; gap: 18px`}>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="display display--hero">{title}</h1>
+    <slot />
+  </div>
+</section>

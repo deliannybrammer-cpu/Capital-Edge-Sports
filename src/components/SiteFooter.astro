@@ -1,0 +1,87 @@
+---
+import Crest from './Crest.astro';
+---
+
+<footer class="site-footer bg-navy">
+  <div class="container inner">
+    <div class="top">
+      <div class="brand">
+        <Crest size={72} variant="reverse" />
+        <div class="stack" style="gap: 6px">
+          <p class="brand-name">Capital Edge Sports</p>
+          <p>Sharpen your game. Build your character.</p>
+        </div>
+      </div>
+      <div class="columns">
+        <nav aria-label="Footer" class="stack" style="gap: 8px">
+          <a href="/about/">About</a>
+          <a href="/programs/">Programs</a>
+          <a href="/register/">Register</a>
+          <a href="/parent-info/">Parent Info</a>
+        </nav>
+        <div class="stack" style="gap: 8px">
+          <p>[email]</p>
+          <p>[phone]</p>
+          <p>[social links]</p>
+        </div>
+      </div>
+    </div>
+    <div class="legal">
+      <p>
+        Capital Edge Sports programs held at MCPS facilities are not sponsored by, associated with, or endorsed by
+        Montgomery County Public Schools or Montgomery County Government.
+      </p>
+      <p>© 2026 Capital Edge Sports</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    font-size: 16px;
+  }
+  .inner {
+    padding-block: 56px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  .top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+  .columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .columns a {
+    text-decoration: none;
+  }
+  .columns a:hover {
+    text-decoration: underline;
+  }
+  .legal {
+    border-top: 1px solid rgba(246, 241, 231, 0.25);
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+</style>
