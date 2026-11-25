@@ -10,6 +10,14 @@ npm run dev      # http://localhost:4321
 npm run build    # static output in dist/
 ```
 
+## Publishing
+
+The site is published to GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`:
+https://deliannybrammer-cpu.github.io/Capital-Edge-Sports/
+
+Internal links go through `url()` in `src/lib/url.ts` so they work under the `/Capital-Edge-Sports/` base path.
+To move to a custom domain, change `site` and `base` in `astro.config.mjs`.
+
 ## Structure
 
 - `src/styles/global.css` — brand tokens (navy `#12284C`, red `#C8102E`, cream `#F6F1E7`; Barlow Condensed + Barlow) and shared classes

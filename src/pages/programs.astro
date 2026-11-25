@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import PageHero from '../components/PageHero.astro';
@@ -29,7 +30,7 @@ const interestFields = [
             leadership moment built around the EDGE Standard.
           </p>
           <p class="body-sm"><b>Who:</b> [Boys and girls ages X–X], all skill levels</p>
-          <a href="/register/" class="btn btn--primary" style="margin-top: 6px">Register for December 13 →</a>
+          <a href={url('/register/')} class="btn btn--primary" style="margin-top: 6px">Register for December 13 →</a>
         </div>
       </article>
 

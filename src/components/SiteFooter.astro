@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import Crest from './Crest.astro';
 ---
 
@@ -14,10 +15,10 @@ import Crest from './Crest.astro';
       </div>
       <div class="columns">
         <nav aria-label="Footer" class="stack" style="gap: 8px">
-          <a href="/about/">About</a>
-          <a href="/programs/">Programs</a>
-          <a href="/register/">Register</a>
-          <a href="/parent-info/">Parent Info</a>
+          <a href={url('/about/')}>About</a>
+          <a href={url('/programs/')}>Programs</a>
+          <a href={url('/register/')}>Register</a>
+          <a href={url('/parent-info/')}>Parent Info</a>
         </nav>
         <div class="stack" style="gap: 8px">
           <p>[email]</p>

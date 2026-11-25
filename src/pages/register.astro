@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import PageHero from '../components/PageHero.astro';
@@ -120,15 +121,15 @@ const experience = ['New to basketball', 'Some experience', 'Plays on a team'];
           <legend>Agreements</legend>
           <label class="check">
             <input type="checkbox" name="waiver" required />
-            <span>I agree to the <a href="/parent-info/">liability waiver</a>. <b>Required</b></span>
+            <span>I agree to the <a href={url('/parent-info/')}>liability waiver</a>. <b>Required</b></span>
           </label>
           <label class="check">
             <input type="checkbox" name="concussion" required />
-            <span>I have read the <a href="/parent-info/">concussion information sheet</a>. <b>Required</b></span>
+            <span>I have read the <a href={url('/parent-info/')}>concussion information sheet</a>. <b>Required</b></span>
           </label>
           <label class="check">
             <input type="checkbox" name="conduct" required />
-            <span>My player and I agree to the <a href="/parent-info/">code of conduct</a>. <b>Required</b></span>
+            <span>My player and I agree to the <a href={url('/parent-info/')}>code of conduct</a>. <b>Required</b></span>
           </label>
           <label class="check">
             <input type="checkbox" name="media" />

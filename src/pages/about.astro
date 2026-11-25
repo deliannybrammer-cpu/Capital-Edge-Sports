@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 
@@ -69,7 +70,7 @@ const safety = [
           ))
         }
       </div>
-      <a href="/parent-info/" class="link-strong">Read our parent info and policies →</a>
+      <a href={url('/parent-info/')} class="link-strong">Read our parent info and policies →</a>
     </div>
   </Section>
 </BaseLayout>

@@ -1,4 +1,5 @@
 ---
+import { url } from '../lib/url';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import PageHero from '../components/PageHero.astro';
@@ -90,7 +91,7 @@ const policies = [
       <h2 class="display" style="font-size: 44px; line-height: 1">Still have a question?</h2>
       <p class="body-lg" style="font-size: 18px; line-height: 1.5">[email] · [phone] · [social]</p>
     </div>
-    <a href="/register/" class="btn btn--primary btn--lg">Register for December 13 →</a>
+    <a href={url('/register/')} class="btn btn--primary btn--lg">Register for December 13 →</a>
   </Section>
 </BaseLayout>
 
